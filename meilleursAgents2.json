@@ -1,0 +1,12 @@
+{
+    "appartement": {
+        "low": 3242,
+        "medium": 4322,
+        "high": 6484
+    },
+    "maison": {
+        "low": 3593,
+        "medium": 4791,
+        "high": 7187
+    }
+}
