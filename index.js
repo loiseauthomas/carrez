@@ -2,6 +2,7 @@ var express = require('express');
 var fs      = require('fs');
 var request = require('request');
 var cheerio = require('cheerio');
+var iconv   = require('iconv-lite');
 var app     = express();
 
 var bodyParser = require('body-parser')
@@ -34,6 +35,7 @@ app.post('/', function(req, res){
     request( urlLebonCoin, function(error, response, html){
 
         if(!error){
+            html=iconv.decode(html,'ISO-8859-1');
             //we load the html page of the url given by the user
             var $ = cheerio.load(html);
 
@@ -165,9 +167,10 @@ app.post('/', function(req, res){
             }
         });
     });
-
     
 });
+
+
 /////////////////////////////////////dependencies//////////////////////////////////////////
 app.get('/vendor/bootstrap/css/bootstrap.min.css', (request, response) => {response.sendFile(__dirname+'/vendor/bootstrap/css/bootstrap.min.css')});
 app.get('/vendor/font-awesome/css/font-awesome.min.css', (request, response) => {response.sendFile(__dirname+'/vendor/font-awesome/css/font-awesome.min.css')});
